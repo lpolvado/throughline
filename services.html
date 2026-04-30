@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services | Throughline</title>
+  <meta name="description" content="Product strategy, product marketing, brand, creative, digital, and fractional leadership. The full stack."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { ink:"#0E0E0E", cream:"#F4EFE6", coral:"#FF5A4E", "coral-deep":"#E64438", ash:"#8A8A8A", "ink-soft":"#1A1A1A", "ink-line":"#262626" },
+        fontFamily: { display:["Anton","sans-serif"], serif:["Instrument Serif","serif"], mono:["JetBrains Mono","monospace"], body:["Inter","sans-serif"] }
+      }}
+    }
+  </script>
+  <style>
+    body { background:#0E0E0E; color:#F4EFE6; }
+    .grain::before {
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:100;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+      opacity:0.06; mix-blend-mode:overlay;
+    }
+    .hover-line { position:relative; }
+    .hover-line::after { content:""; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:#FF5A4E; transition:width 0.3s ease; }
+    .hover-line:hover::after { width:100%; }
+    .text-balance { text-wrap:balance; }
+    .reveal { opacity:0; transform:translateY(20px); animation:reveal 0.8s ease forwards; }
+    @keyframes reveal { to { opacity:1; transform:translateY(0); } }
+    .delay-1 { animation-delay:0.1s; } .delay-2 { animation-delay:0.25s; }
+    .scroll-link { scroll-margin-top: 100px; }
+  </style>
+</head>
+<body class="font-body grain">
+
+  <!-- NAV -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-ink/70 border-b border-ink-line">
+    <nav class="max-w-[1400px] mx-auto px-6 md:px-10 py-5 flex items-center justify-between">
+      <a href="index.html" class="flex items-baseline gap-1.5">
+        <span class="font-display text-2xl tracking-wider text-cream">THROUGHLINE</span>
+        <span class="text-coral font-mono text-xs">/01</span>
+      </a>
+      <div class="hidden md:flex items-center gap-10 font-mono text-xs uppercase tracking-widest">
+        <a href="index.html" class="hover-line text-cream/70 hover:text-cream transition">Home</a>
+        <a href="about.html" class="hover-line text-cream/70 hover:text-cream transition">About</a>
+        <a href="services.html" class="hover-line text-coral">Services</a>
+        <a href="contact.html" class="hover-line text-cream/70 hover:text-cream transition">Contact</a>
+      </div>
+      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 bg-coral text-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest hover:bg-cream transition">
+        Start a project <span>→</span>
+      </a>
+      <button id="nav-toggle" class="md:hidden text-cream" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="fixed inset-0 z-[60] bg-ink translate-x-full transition-transform duration-300 flex flex-col px-8 pt-8 pb-12">
+    <div class="flex justify-end mb-12">
+      <button id="nav-close" class="text-cream" aria-label="Close menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-6 font-display text-5xl tracking-wide">
+      <a href="index.html" class="text-cream/80">Home</a>
+      <a href="about.html" class="text-cream/80">About</a>
+      <a href="services.html" class="text-coral">Services</a>
+      <a href="contact.html" class="text-cream/80">Contact</a>
+    </nav>
+    <a href="contact.html" class="mt-auto bg-coral text-ink py-4 text-center font-mono text-xs uppercase tracking-widest">Start a project →</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="pt-40 pb-16 px-6 md:px-10 max-w-[1400px] mx-auto">
+    <div class="grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-2 reveal delay-1">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral">[ Services / 02 ]</p>
+      </div>
+      <div class="col-span-12 md:col-span-10 reveal delay-2">
+        <h1 class="font-display text-[8vw] md:text-[6vw] leading-[0.85] tracking-tight text-cream uppercase text-balance">
+          Six things,<br/>
+          done <span class="font-serif italic text-coral lowercase normal-case">properly</span>.
+        </h1>
+        <p class="text-xl md:text-2xl text-cream/70 mt-12 max-w-2xl leading-snug font-light">
+          Each engagement is scoped tightly and priced up front. Pick a sprint, a project, or embed us into your team. No retainers designed to last forever.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOC -->
+  <section class="py-12 px-6 md:px-10 max-w-[1400px] mx-auto border-y border-ink-line">
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-4 font-mono text-xs uppercase tracking-widest">
+      <a href="#service-01" class="text-cream/70 hover:text-coral transition flex items-start gap-2"><span class="text-coral">/01</span> Product Strategy</a>
+      <a href="#service-02" class="text-cream/70 hover:text-coral transition flex items-start gap-2"><span class="text-coral">/02</span> PMM & GTM</a>
+      <a href="#service-03" class="text-cream/70 hover:text-coral transition flex items-start gap-2"><span class="text-coral">/03</span> Brand & Identity</a>
+      <a href="#service-04" class="text-cream/70 hover:text-coral transition flex items-start gap-2"><span class="text-coral">/04</span> Creative</a>
+      <a href="#service-05" class="text-cream/70 hover:text-coral transition flex items-start gap-2"><span class="text-coral">/05</span> Digital Marketing</a>
+      <a href="#service-06" class="text-cream/70 hover:text-coral transition flex items-start gap-2"><span class="text-coral">/06</span> Fractional</a>
+    </div>
+  </section>
+
+  <!-- SERVICE 01 -->
+  <section id="service-01" class="scroll-link py-32 px-6 md:px-10 max-w-[1400px] mx-auto border-b border-ink-line">
+    <div class="grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-5">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral mb-4">/01 · Core</p>
+        <h2 class="font-display text-6xl md:text-7xl uppercase leading-[0.9] tracking-tight text-cream mb-8">Product<br/>Strategy</h2>
+        <p class="text-xl text-cream/70 leading-snug font-light mb-8">Figure out what to build, who it's for, and why anyone should care, before you spend an engineering quarter finding out you guessed wrong.</p>
+        <a href="contact.html" class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-coral hover:gap-5 transition-all">
+          Scope a project <span>→</span>
+        </a>
+      </div>
+      <div class="col-span-12 md:col-span-6 md:col-start-7">
+        <p class="font-mono text-xs uppercase tracking-widest text-ash mb-6">What's inside</p>
+        <ul class="space-y-5 text-lg">
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Customer & user research.</strong> Interviews, jobs-to-be-done, workflow shadowing. Finding the friction nobody's writing tickets for.</span></li>
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Opportunity sizing.</strong> Which problems are worth solving, ranked by impact and effort. The answer is rarely the loudest one.</span></li>
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Roadmap shaping.</strong> A sequence your team can actually run, not a 3-year vision deck.</span></li>
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Prioritization frameworks.</strong> Lightweight, honest scoring that survives contact with the engineering team.</span></li>
+          <li class="flex gap-4"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Stop-doing list.</strong> The unsexy half of strategy. What to kill so the team can ship the things that matter.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 02 -->
+  <section id="service-02" class="scroll-link py-32 px-6 md:px-10 bg-cream text-ink border-b border-ink-line">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-5">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral-deep mb-4">/02 · Core</p>
+        <h2 class="font-display text-6xl md:text-7xl uppercase leading-[0.9] tracking-tight mb-8">Product<br/>Marketing<br/>& GTM</h2>
+        <p class="text-xl text-ink/70 leading-snug font-light mb-8">Position the product so it sells itself. Launch it so people notice. Arm the people selling it so they don't sound like a press release.</p>
+        <a href="contact.html" class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-coral-deep hover:gap-5 transition-all">
+          Scope a project <span>→</span>
+        </a>
+      </div>
+      <div class="col-span-12 md:col-span-6 md:col-start-7">
+        <p class="font-mono text-xs uppercase tracking-widest text-ink/50 mb-6">What's inside</p>
+        <ul class="space-y-5 text-lg">
+          <li class="flex gap-4 border-b border-ink/20 pb-5"><span class="text-coral-deep font-mono text-xs pt-1">→</span> <span class="text-ink/80"><strong>Positioning & messaging.</strong> What you do, who it's for, why it's different. In language a customer would actually use.</span></li>
+          <li class="flex gap-4 border-b border-ink/20 pb-5"><span class="text-coral-deep font-mono text-xs pt-1">→</span> <span class="text-ink/80"><strong>Launch strategy.</strong> Cross-functional plans for product launches that don't fizzle on day three.</span></li>
+          <li class="flex gap-4 border-b border-ink/20 pb-5"><span class="text-coral-deep font-mono text-xs pt-1">→</span> <span class="text-ink/80"><strong>Sales enablement.</strong> Decks, one-pagers, objection handling, demo flows. For sellers, by people who've sold.</span></li>
+          <li class="flex gap-4 border-b border-ink/20 pb-5"><span class="text-coral-deep font-mono text-xs pt-1">→</span> <span class="text-ink/80"><strong>Competitive intelligence.</strong> Real teardowns, not a Gartner quadrant.</span></li>
+          <li class="flex gap-4 border-b border-ink/20 pb-5"><span class="text-coral-deep font-mono text-xs pt-1">→</span> <span class="text-ink/80"><strong>Pricing & packaging.</strong> Tiering, bundles, naming. The most leveraged work most companies skip.</span></li>
+          <li class="flex gap-4"><span class="text-coral-deep font-mono text-xs pt-1">→</span> <span class="text-ink/80"><strong>Go-to-market planning.</strong> Channels, segments, sequencing. Which door to walk through first, and what to say when it opens.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 03 -->
+  <section id="service-03" class="scroll-link py-32 px-6 md:px-10 max-w-[1400px] mx-auto border-b border-ink-line">
+    <div class="grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-5">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral mb-4">/03 · Core</p>
+        <h2 class="font-display text-6xl md:text-7xl uppercase leading-[0.9] tracking-tight text-cream mb-8">Brand &<br/>Identity</h2>
+        <p class="text-xl text-cream/70 leading-snug font-light mb-8">A brand isn't a logo. It's the feeling someone has after they hang up the call. We build the systems that produce that feeling, on purpose.</p>
+        <a href="contact.html" class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-coral hover:gap-5 transition-all">
+          Scope a project <span>→</span>
+        </a>
+      </div>
+      <div class="col-span-12 md:col-span-6 md:col-start-7">
+        <p class="font-mono text-xs uppercase tracking-widest text-ash mb-6">What's inside</p>
+        <ul class="space-y-5 text-lg">
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Brand strategy.</strong> Positioning at the company level. What you stand for, who you're for, what you'll never do.</span></li>
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Naming.</strong> Companies, products, features. Names that age well and don't sound like five other startups.</span></li>
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Voice & tone.</strong> The way you sound across emails, ads, support, error messages. The everyday brand.</span></li>
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Visual identity systems.</strong> Logo, type, color, motion principles. Built to scale with you, with our creative partners.</span></li>
+          <li class="flex gap-4"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Brand guidelines.</strong> Documentation that helps your team apply the brand without coming back to us every week.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 04 -->
+  <section id="service-04" class="scroll-link py-32 px-6 md:px-10 max-w-[1400px] mx-auto border-b border-ink-line">
+    <div class="grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-5">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral mb-4">/04 · Add-on</p>
+        <h2 class="font-display text-6xl md:text-7xl uppercase leading-[0.9] tracking-tight text-cream mb-8">Creative<br/>Services</h2>
+        <p class="text-xl text-cream/70 leading-snug font-light mb-8">When the strategy's locked, you need people who can make the thing. We art-direct and produce with a vetted partner network: design, video, motion, photo.</p>
+        <a href="contact.html" class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-coral hover:gap-5 transition-all">
+          Scope a project <span>→</span>
+        </a>
+      </div>
+      <div class="col-span-12 md:col-span-6 md:col-start-7">
+        <p class="font-mono text-xs uppercase tracking-widest text-ash mb-6">What's inside</p>
+        <ul class="space-y-5 text-lg">
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Art direction.</strong> The throughline across every piece of work, so your campaign, site, and product all feel like one company.</span></li>
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Web design & build.</strong> Sites that load fast, look sharp, and convert. Built with our design and dev partners.</span></li>
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Video & motion.</strong> Brand films, product explainers, paid social cuts. Concepted with you, produced by people we trust.</span></li>
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Photography.</strong> Product, lifestyle, founder. The kind that doesn't look stock.</span></li>
+          <li class="flex gap-4"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Campaign creative.</strong> Big-idea concepts and the asset systems to roll them out across every channel.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 05 -->
+  <section id="service-05" class="scroll-link py-32 px-6 md:px-10 max-w-[1400px] mx-auto border-b border-ink-line">
+    <div class="grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-5">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral mb-4">/05 · Add-on</p>
+        <h2 class="font-display text-6xl md:text-7xl uppercase leading-[0.9] tracking-tight text-cream mb-8">Digital<br/>Marketing</h2>
+        <p class="text-xl text-cream/70 leading-snug font-light mb-8">Lifecycle, paid, SEO, content. Built around what your data is actually telling you, not what a vendor wants to sell you.</p>
+        <a href="contact.html" class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-coral hover:gap-5 transition-all">
+          Scope a project <span>→</span>
+        </a>
+      </div>
+      <div class="col-span-12 md:col-span-6 md:col-start-7">
+        <p class="font-mono text-xs uppercase tracking-widest text-ash mb-6">What's inside</p>
+        <ul class="space-y-5 text-lg">
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Lifecycle & CRM.</strong> Onboarding, activation, retention, win-back. The unsexy, high-leverage work most teams underinvest in.</span></li>
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Paid acquisition strategy.</strong> Channel mix, creative testing frameworks, attribution sanity checks.</span></li>
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">SEO & content systems.</strong> Topic strategy, briefs, editorial calendar, and a process your team can run after we leave.</span></li>
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Marketing analytics.</strong> Dashboards that answer real questions, not 40-tab vanity reports.</span></li>
+          <li class="flex gap-4"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Martech audits.</strong> What you actually need vs. what a sales rep convinced you to buy.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 06 -->
+  <section id="service-06" class="scroll-link py-32 px-6 md:px-10 max-w-[1400px] mx-auto border-b border-ink-line">
+    <div class="grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-5">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral mb-4">/06 · Embedded</p>
+        <h2 class="font-display text-6xl md:text-7xl uppercase leading-[0.9] tracking-tight text-cream mb-8">Fractional<br/>Leadership</h2>
+        <p class="text-xl text-cream/70 leading-snug font-light mb-8">Sometimes you don't need a project. You need a senior product or marketing leader in the room, two days a week, until you're ready to hire one full-time.</p>
+        <a href="contact.html" class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-coral hover:gap-5 transition-all">
+          Scope a project <span>→</span>
+        </a>
+      </div>
+      <div class="col-span-12 md:col-span-6 md:col-start-7">
+        <p class="font-mono text-xs uppercase tracking-widest text-ash mb-6">What's inside</p>
+        <ul class="space-y-5 text-lg">
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Fractional Head of Product.</strong> Roadmap, team coaching, hiring help, exec alignment.</span></li>
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Fractional Head of Product Marketing.</strong> Positioning, launches, sales partnership, PMM org design.</span></li>
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Advisory.</strong> Lighter-touch monthly engagement for founders or early-stage teams who just need a sharp second opinion.</span></li>
+          <li class="flex gap-4 border-b border-ink-line pb-5"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Hiring & team design.</strong> Help write the job spec, screen candidates, and onboard your full-time hire when they land.</span></li>
+          <li class="flex gap-4"><span class="text-coral font-mono text-xs pt-1">→</span> <span class="text-cream/80"><strong class="text-cream">Three-month minimum.</strong> Anything shorter doesn't make a real dent.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE PRICE -->
+  <section class="py-32 px-6 md:px-10 bg-ink-soft border-y border-ink-line">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-3">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral mb-2">[ How we price ]</p>
+        <p class="font-mono text-xs text-ash">§ Pricing</p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="font-display text-5xl md:text-6xl uppercase leading-[0.9] tracking-tight text-cream mb-8 text-balance">
+          Fixed scope. Fixed price. <span class="font-serif italic text-coral lowercase normal-case">Three shapes</span> of engagement.
+        </h2>
+        <p class="text-lg text-cream/70 leading-relaxed max-w-2xl mb-12">
+          Every project starts with a free 30-minute scoping call. If we're a fit, we'll send a tight proposal within a week. If we're not, we'll point you toward someone better.
+        </p>
+        <div class="grid md:grid-cols-3 gap-px bg-ink-line">
+          <div class="bg-ink p-8">
+            <p class="font-mono text-xs uppercase tracking-widest text-coral mb-4">Sprint</p>
+            <h3 class="font-display text-3xl uppercase tracking-tight text-cream mb-3">2 weeks, one deliverable</h3>
+            <p class="text-cream/60">Positioning doc, customer research synthesis, launch plan, brand audit. One sharp output.</p>
+          </div>
+          <div class="bg-ink p-8">
+            <p class="font-mono text-xs uppercase tracking-widest text-coral mb-4">Project</p>
+            <h3 class="font-display text-3xl uppercase tracking-tight text-cream mb-3">6–10 weeks, full workstream</h3>
+            <p class="text-cream/60">Product launch end to end, brand identity build, GTM plan with rollout. Multi-deliverable.</p>
+          </div>
+          <div class="bg-ink p-8">
+            <p class="font-mono text-xs uppercase tracking-widest text-coral mb-4">Embedded</p>
+            <h3 class="font-display text-3xl uppercase tracking-tight text-cream mb-3">3 months minimum, monthly retainer</h3>
+            <p class="text-cream/60">Fractional leadership or ongoing strategic partnership. Renews if it's working.</p>
+          </div>
+        </div>
+        <p class="text-cream/50 mt-8 font-mono text-xs uppercase tracking-widest">→ Get a quote on your scoping call.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-40 px-6 md:px-10 bg-coral text-ink">
+    <div class="max-w-[1200px] mx-auto text-center">
+      <p class="font-mono text-xs uppercase tracking-widest mb-8">[ Ready? ]</p>
+      <h2 class="font-display text-6xl md:text-9xl uppercase leading-[0.85] tracking-tight text-balance mb-12">
+        Pick a thing.<br/>
+        Let's <span class="font-serif italic lowercase normal-case">make it real.</span>
+      </h2>
+      <a href="contact.html" class="inline-flex items-center gap-3 bg-ink text-cream px-10 py-5 font-mono text-xs uppercase tracking-widest hover:bg-cream hover:text-ink transition">
+        Book a scoping call <span>→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-ink border-t border-ink-line pt-20 pb-10 px-6 md:px-10">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-12 gap-6 mb-16">
+        <div class="col-span-12 md:col-span-5">
+          <div class="flex items-baseline gap-1.5 mb-6">
+            <span class="font-display text-4xl tracking-wider text-cream">THROUGHLINE</span>
+            <span class="text-coral font-mono text-xs">/01</span>
+          </div>
+          <p class="text-cream/60 max-w-md text-lg leading-relaxed">A product, marketing, and brand consultancy for teams who want sharp thinking and honest delivery.</p>
+        </div>
+        <div class="col-span-6 md:col-span-3 md:col-start-8">
+          <p class="font-mono text-xs uppercase tracking-widest text-coral mb-6">Pages</p>
+          <ul class="space-y-3 font-mono text-sm">
+            <li><a href="index.html" class="text-cream/70 hover:text-coral transition">Home</a></li>
+            <li><a href="about.html" class="text-cream/70 hover:text-coral transition">About</a></li>
+            <li><a href="services.html" class="text-cream/70 hover:text-coral transition">Services</a></li>
+            <li><a href="contact.html" class="text-cream/70 hover:text-coral transition">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-span-6 md:col-span-2">
+          <p class="font-mono text-xs uppercase tracking-widest text-coral mb-6">Reach</p>
+          <ul class="space-y-3 font-mono text-sm">
+            <li><a href="mailto:hello@throughline.co" class="text-cream/70 hover:text-coral transition">Email</a></li>
+            <li><a href="#" class="text-cream/70 hover:text-coral transition">LinkedIn</a></li>
+            <li><a href="#" class="text-cream/70 hover:text-coral transition">Substack</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-ink-line pt-8 flex flex-col md:flex-row justify-between gap-4 font-mono text-xs uppercase tracking-widest text-ash">
+        <p>© 2026 Throughline. Made in Denver.</p>
+        <p>All rights reserved · <span class="text-coral">●</span> Open for projects</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navClose = document.getElementById('nav-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    navToggle.addEventListener('click', () => { mobileMenu.classList.remove('translate-x-full'); document.body.style.overflow='hidden'; });
+    navClose.addEventListener('click', () => { mobileMenu.classList.add('translate-x-full'); document.body.style.overflow=''; });
+  </script>
+</body>
+</html>

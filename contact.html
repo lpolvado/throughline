@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Throughline</title>
+  <meta name="description" content="Tell us what's keeping you up. We'll tell you if we can help."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { ink:"#0E0E0E", cream:"#F4EFE6", coral:"#FF5A4E", "coral-deep":"#E64438", ash:"#8A8A8A", "ink-soft":"#1A1A1A", "ink-line":"#262626" },
+        fontFamily: { display:["Anton","sans-serif"], serif:["Instrument Serif","serif"], mono:["JetBrains Mono","monospace"], body:["Inter","sans-serif"] }
+      }}
+    }
+  </script>
+  <style>
+    body { background:#0E0E0E; color:#F4EFE6; }
+    .grain::before {
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:100;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+      opacity:0.06; mix-blend-mode:overlay;
+    }
+    .hover-line { position:relative; }
+    .hover-line::after { content:""; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:#FF5A4E; transition:width 0.3s ease; }
+    .hover-line:hover::after { width:100%; }
+    .text-balance { text-wrap:balance; }
+    .reveal { opacity:0; transform:translateY(20px); animation:reveal 0.8s ease forwards; }
+    @keyframes reveal { to { opacity:1; transform:translateY(0); } }
+    .delay-1 { animation-delay:0.1s; } .delay-2 { animation-delay:0.25s; }
+    input, textarea, select { background: transparent; }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: #FF5A4E; }
+    .field-group { border-bottom: 1px solid #262626; padding: 20px 0; transition: border-color 0.2s; }
+    .field-group:focus-within { border-color: #FF5A4E; }
+    .field-group label { font-family: "JetBrains Mono", monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: #8A8A8A; display: block; margin-bottom: 8px; }
+    .field-group input, .field-group textarea, .field-group select { width: 100%; color: #F4EFE6; font-size: 18px; border: none; padding: 0; }
+    .field-group input::placeholder, .field-group textarea::placeholder { color: #444; }
+    .pill { display: inline-flex; align-items: center; padding: 8px 14px; border: 1px solid #262626; border-radius: 999px; font-family: "JetBrains Mono", monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: #F4EFE6; cursor: pointer; transition: all 0.2s; }
+    .pill:hover { border-color: #FF5A4E; color: #FF5A4E; }
+    .pill input { display: none; }
+    .pill input:checked ~ span { color: #0E0E0E; }
+    .pill:has(input:checked) { background: #FF5A4E; border-color: #FF5A4E; color: #0E0E0E; }
+  </style>
+</head>
+<body class="font-body grain">
+
+  <!-- NAV -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-ink/70 border-b border-ink-line">
+    <nav class="max-w-[1400px] mx-auto px-6 md:px-10 py-5 flex items-center justify-between">
+      <a href="index.html" class="flex items-baseline gap-1.5">
+        <span class="font-display text-2xl tracking-wider text-cream">THROUGHLINE</span>
+        <span class="text-coral font-mono text-xs">/01</span>
+      </a>
+      <div class="hidden md:flex items-center gap-10 font-mono text-xs uppercase tracking-widest">
+        <a href="index.html" class="hover-line text-cream/70 hover:text-cream transition">Home</a>
+        <a href="about.html" class="hover-line text-cream/70 hover:text-cream transition">About</a>
+        <a href="services.html" class="hover-line text-cream/70 hover:text-cream transition">Services</a>
+        <a href="contact.html" class="hover-line text-coral">Contact</a>
+      </div>
+      <a href="#contact-form" class="hidden md:inline-flex items-center gap-2 bg-coral text-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest hover:bg-cream transition">
+        Jump to form <span>↓</span>
+      </a>
+      <button id="nav-toggle" class="md:hidden text-cream" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="fixed inset-0 z-[60] bg-ink translate-x-full transition-transform duration-300 flex flex-col px-8 pt-8 pb-12">
+    <div class="flex justify-end mb-12">
+      <button id="nav-close" class="text-cream" aria-label="Close menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-6 font-display text-5xl tracking-wide">
+      <a href="index.html" class="text-cream/80">Home</a>
+      <a href="about.html" class="text-cream/80">About</a>
+      <a href="services.html" class="text-cream/80">Services</a>
+      <a href="contact.html" class="text-coral">Contact</a>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <section class="pt-40 pb-16 px-6 md:px-10 max-w-[1400px] mx-auto">
+    <div class="grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-2 reveal delay-1">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral">[ Contact / 03 ]</p>
+      </div>
+      <div class="col-span-12 md:col-span-10 reveal delay-2">
+        <h1 class="font-display text-[8vw] md:text-[6vw] leading-[0.85] tracking-tight text-cream uppercase text-balance">
+          Tell us<br/>
+          <span class="font-serif italic text-coral lowercase normal-case">what's keeping you up.</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-cream/70 mt-12 max-w-2xl leading-snug font-light">
+          We read every message. Within 48 hours, we'll either send back a few clarifying questions, book a scoping call, or refer you to someone who's a better fit.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK CONTACT STRIP -->
+  <section class="border-y border-ink-line">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-3">
+      <a href="mailto:hello@throughline.co" class="group p-8 md:p-10 md:border-r border-ink-line hover:bg-ink-soft transition flex flex-col gap-2">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral">Email</p>
+        <p class="font-display text-3xl md:text-4xl uppercase tracking-tight text-cream group-hover:text-coral transition">hello@throughline.co</p>
+        <p class="text-ash text-sm">Response within 48 hours, usually faster.</p>
+      </a>
+      <a href="#" class="group p-8 md:p-10 md:border-r border-ink-line hover:bg-ink-soft transition flex flex-col gap-2">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral">Calendar</p>
+        <p class="font-display text-3xl md:text-4xl uppercase tracking-tight text-cream group-hover:text-coral transition">Book a 30-min call</p>
+        <p class="text-ash text-sm">Free scoping call. No deck, no slides. Just a conversation.</p>
+      </a>
+      <a href="#" class="group p-8 md:p-10 hover:bg-ink-soft transition flex flex-col gap-2">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral">LinkedIn</p>
+        <p class="font-display text-3xl md:text-4xl uppercase tracking-tight text-cream group-hover:text-coral transition">DM us anywhere</p>
+        <p class="text-ash text-sm">If that's how you communicate, we'll meet you there.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section id="contact-form" class="py-32 px-6 md:px-10 max-w-[1400px] mx-auto">
+    <div class="grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-4">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral mb-4">[ The form ]</p>
+        <h2 class="font-display text-5xl md:text-6xl uppercase leading-[0.9] tracking-tight text-cream mb-8">Or use<br/>the form.</h2>
+        <p class="text-lg text-cream/70 leading-relaxed mb-8">The more you tell us, the better we can scope. But don't sweat it. Even a one-line "we need help with X" is enough to start.</p>
+        <div class="space-y-4 font-mono text-xs uppercase tracking-widest text-ash">
+          <p class="flex items-center gap-2"><span class="text-coral">→</span> No spam. No newsletters.</p>
+          <p class="flex items-center gap-2"><span class="text-coral">→</span> No "we'll add you to our CRM."</p>
+          <p class="flex items-center gap-2"><span class="text-coral">→</span> Just a real reply from a real person.</p>
+        </div>
+      </div>
+
+      <div class="col-span-12 md:col-span-7 md:col-start-6">
+        <form class="space-y-2" onsubmit="event.preventDefault(); alert('This is a static prototype. Connect this form to your tool of choice (Formspree, Tally, custom backend, etc.).');">
+          <div class="field-group">
+            <label for="name">Your name</label>
+            <input type="text" id="name" placeholder="Jane Smith" required/>
+          </div>
+
+          <div class="field-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="jane@company.com" required/>
+          </div>
+
+          <div class="field-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" placeholder="Acme Inc."/>
+          </div>
+
+          <div class="field-group">
+            <label>What do you need help with? <span class="text-ash normal-case lowercase">(pick any)</span></label>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <label class="pill"><input type="checkbox"/><span>Product Strategy</span></label>
+              <label class="pill"><input type="checkbox"/><span>Product Marketing</span></label>
+              <label class="pill"><input type="checkbox"/><span>Brand & Identity</span></label>
+              <label class="pill"><input type="checkbox"/><span>Creative</span></label>
+              <label class="pill"><input type="checkbox"/><span>Digital Marketing</span></label>
+              <label class="pill"><input type="checkbox"/><span>Fractional</span></label>
+              <label class="pill"><input type="checkbox"/><span>Not sure yet</span></label>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="timeline">Timeline</label>
+            <select id="timeline" class="appearance-none cursor-pointer">
+              <option value="">Pick one</option>
+              <option>ASAP, yesterday ideally</option>
+              <option>Within the next month</option>
+              <option>Next quarter</option>
+              <option>Just exploring for now</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="budget">Rough budget <span class="text-ash normal-case lowercase">(optional, but helps us scope)</span></label>
+            <select id="budget" class="appearance-none cursor-pointer">
+              <option value="">Pick one</option>
+              <option>Under $15K</option>
+              <option>$15K – $50K</option>
+              <option>$50K – $150K</option>
+              <option>$150K+</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="message">What's going on?</label>
+            <textarea id="message" rows="6" placeholder="Tell us about the thing. The more context the better, but a few sentences is fine to start." required></textarea>
+          </div>
+
+          <button type="submit" class="mt-8 w-full bg-coral text-ink py-5 font-mono text-xs uppercase tracking-widest hover:bg-cream transition flex items-center justify-center gap-3 group">
+            Send it <span class="group-hover:translate-x-1 transition">→</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-32 px-6 md:px-10 bg-cream text-ink">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-3">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral-deep mb-2">[ FAQ ]</p>
+        <p class="font-mono text-xs text-ink/50">§ Common questions</p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="font-display text-5xl md:text-6xl uppercase leading-[0.9] tracking-tight mb-16 text-balance">
+          Things people <span class="font-serif italic text-coral-deep lowercase normal-case">always</span> ask.
+        </h2>
+        <div class="border-t border-ink/20">
+          <details class="border-b border-ink/20 group">
+            <summary class="py-8 cursor-pointer flex items-center justify-between gap-4 list-none">
+              <span class="font-display text-2xl md:text-3xl uppercase tracking-tight">How long until you can start?</span>
+              <span class="font-mono text-2xl text-coral-deep group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="pb-8 text-lg text-ink/70 leading-relaxed max-w-3xl">Usually 2–4 weeks from signed contract. Sometimes faster for sprints. We don't take on more than we can do well, so occasionally we'll suggest a start date a month out, or refer you to someone in our network if you can't wait.</p>
+          </details>
+          <details class="border-b border-ink/20 group">
+            <summary class="py-8 cursor-pointer flex items-center justify-between gap-4 list-none">
+              <span class="font-display text-2xl md:text-3xl uppercase tracking-tight">What does it cost?</span>
+              <span class="font-mono text-2xl text-coral-deep group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="pb-8 text-lg text-ink/70 leading-relaxed max-w-3xl">Sprints start in the low five figures. Full projects sit in the mid-five-figure range. Fractional retainers are monthly. Every quote is fixed-price and tied to specific deliverables. No hourly meters running. We'll give you a real number after the scoping call.</p>
+          </details>
+          <details class="border-b border-ink/20 group">
+            <summary class="py-8 cursor-pointer flex items-center justify-between gap-4 list-none">
+              <span class="font-display text-2xl md:text-3xl uppercase tracking-tight">Do you work with early-stage startups?</span>
+              <span class="font-mono text-2xl text-coral-deep group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="pb-8 text-lg text-ink/70 leading-relaxed max-w-3xl">Yes, but only if there's a real budget and a real problem. We're not a discount option for pre-seed founders, but we love working with seed-to-Series-A teams who've raised, hired, and now need help making smart bets.</p>
+          </details>
+          <details class="border-b border-ink/20 group">
+            <summary class="py-8 cursor-pointer flex items-center justify-between gap-4 list-none">
+              <span class="font-display text-2xl md:text-3xl uppercase tracking-tight">Can you do execution, not just strategy?</span>
+              <span class="font-mono text-2xl text-coral-deep group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="pb-8 text-lg text-ink/70 leading-relaxed max-w-3xl">That's the whole point. We embed with your team and help ship the work. For specialty execution like design, dev, video, or paid media, we bring in vetted partners, coordinated by us, contracted with you.</p>
+          </details>
+          <details class="border-b border-ink/20 group">
+            <summary class="py-8 cursor-pointer flex items-center justify-between gap-4 list-none">
+              <span class="font-display text-2xl md:text-3xl uppercase tracking-tight">Are you a solo consultant or a firm?</span>
+              <span class="font-mono text-2xl text-coral-deep group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="pb-8 text-lg text-ink/70 leading-relaxed max-w-3xl">A small senior team plus a network of trusted specialists we bring in by project. We stay small on purpose. It keeps the people in the room the people doing the work.</p>
+          </details>
+          <details class="group">
+            <summary class="py-8 cursor-pointer flex items-center justify-between gap-4 list-none">
+              <span class="font-display text-2xl md:text-3xl uppercase tracking-tight">What if we're not ready yet?</span>
+              <span class="font-mono text-2xl text-coral-deep group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <p class="pb-8 text-lg text-ink/70 leading-relaxed max-w-3xl">Send a note anyway. We'll tell you honestly if you should wait, what to do in the meantime, and we'll remember you when the timing's right. No CRM nurture sequence required.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-ink border-t border-ink-line pt-20 pb-10 px-6 md:px-10">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-12 gap-6 mb-16">
+        <div class="col-span-12 md:col-span-5">
+          <div class="flex items-baseline gap-1.5 mb-6">
+            <span class="font-display text-4xl tracking-wider text-cream">THROUGHLINE</span>
+            <span class="text-coral font-mono text-xs">/01</span>
+          </div>
+          <p class="text-cream/60 max-w-md text-lg leading-relaxed">A product, marketing, and brand consultancy for teams who want sharp thinking and honest delivery.</p>
+        </div>
+        <div class="col-span-6 md:col-span-3 md:col-start-8">
+          <p class="font-mono text-xs uppercase tracking-widest text-coral mb-6">Pages</p>
+          <ul class="space-y-3 font-mono text-sm">
+            <li><a href="index.html" class="text-cream/70 hover:text-coral transition">Home</a></li>
+            <li><a href="about.html" class="text-cream/70 hover:text-coral transition">About</a></li>
+            <li><a href="services.html" class="text-cream/70 hover:text-coral transition">Services</a></li>
+            <li><a href="contact.html" class="text-cream/70 hover:text-coral transition">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-span-6 md:col-span-2">
+          <p class="font-mono text-xs uppercase tracking-widest text-coral mb-6">Reach</p>
+          <ul class="space-y-3 font-mono text-sm">
+            <li><a href="mailto:hello@throughline.co" class="text-cream/70 hover:text-coral transition">Email</a></li>
+            <li><a href="#" class="text-cream/70 hover:text-coral transition">LinkedIn</a></li>
+            <li><a href="#" class="text-cream/70 hover:text-coral transition">Substack</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-ink-line pt-8 flex flex-col md:flex-row justify-between gap-4 font-mono text-xs uppercase tracking-widest text-ash">
+        <p>© 2026 Throughline. Made in Denver.</p>
+        <p>All rights reserved · <span class="text-coral">●</span> Open for projects</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navClose = document.getElementById('nav-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    navToggle.addEventListener('click', () => { mobileMenu.classList.remove('translate-x-full'); document.body.style.overflow='hidden'; });
+    navClose.addEventListener('click', () => { mobileMenu.classList.add('translate-x-full'); document.body.style.overflow=''; });
+  </script>
+</body>
+</html>

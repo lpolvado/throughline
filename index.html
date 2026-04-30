@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Throughline | Product, Marketing, Brand. No Corporate BS.</title>
+  <meta name="description" content="Throughline is a product and product marketing consultancy that turns customer reality into prioritized action."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#0E0E0E",
+            cream: "#F4EFE6",
+            coral: "#FF5A4E",
+            "coral-deep": "#E64438",
+            ash: "#8A8A8A",
+            "ink-soft": "#1A1A1A",
+            "ink-line": "#262626",
+          },
+          fontFamily: {
+            display: ["Anton", "sans-serif"],
+            serif: ["Instrument Serif", "serif"],
+            mono: ["JetBrains Mono", "monospace"],
+            body: ["Inter", "sans-serif"],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body { background: #0E0E0E; color: #F4EFE6; }
+    .grain::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+      opacity: 0.06; mix-blend-mode: overlay;
+    }
+    .marquee { animation: scroll 40s linear infinite; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .hover-line { position: relative; }
+    .hover-line::after {
+      content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 1px;
+      background: #FF5A4E; transition: width 0.3s ease;
+    }
+    .hover-line:hover::after { width: 100%; }
+    .reveal { opacity: 0; transform: translateY(20px); animation: reveal 0.8s ease forwards; }
+    @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.25s; }
+    .delay-3 { animation-delay: 0.4s; }
+    .delay-4 { animation-delay: 0.55s; }
+    .text-balance { text-wrap: balance; }
+    .corner-mark::before {
+      content: "+"; position: absolute; top: 8px; left: 8px;
+      color: #FF5A4E; font-family: "JetBrains Mono", monospace; font-size: 14px;
+    }
+  </style>
+</head>
+<body class="font-body grain">
+
+  <!-- NAV -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-ink/70 border-b border-ink-line">
+    <nav class="max-w-[1400px] mx-auto px-6 md:px-10 py-5 flex items-center justify-between">
+      <a href="index.html" class="flex items-baseline gap-1.5">
+        <span class="font-display text-2xl tracking-wider text-cream">THROUGHLINE</span>
+        <span class="text-coral font-mono text-xs">/01</span>
+      </a>
+      <div class="hidden md:flex items-center gap-10 font-mono text-xs uppercase tracking-widest">
+        <a href="index.html" class="hover-line text-coral">Home</a>
+        <a href="about.html" class="hover-line text-cream/70 hover:text-cream transition">About</a>
+        <a href="services.html" class="hover-line text-cream/70 hover:text-cream transition">Services</a>
+        <a href="contact.html" class="hover-line text-cream/70 hover:text-cream transition">Contact</a>
+      </div>
+      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 bg-coral text-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest hover:bg-cream transition">
+        Start a project <span>→</span>
+      </a>
+      <button id="nav-toggle" class="md:hidden text-cream" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="fixed inset-0 z-[60] bg-ink translate-x-full transition-transform duration-300 flex flex-col px-8 pt-8 pb-12">
+    <div class="flex justify-end mb-12">
+      <button id="nav-close" class="text-cream" aria-label="Close menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-6 font-display text-5xl tracking-wide">
+      <a href="index.html" class="text-coral">Home</a>
+      <a href="about.html" class="text-cream/80">About</a>
+      <a href="services.html" class="text-cream/80">Services</a>
+      <a href="contact.html" class="text-cream/80">Contact</a>
+    </nav>
+    <a href="contact.html" class="mt-auto bg-coral text-ink py-4 text-center font-mono text-xs uppercase tracking-widest">Start a project →</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="pt-40 pb-32 px-6 md:px-10 max-w-[1400px] mx-auto relative">
+    <div class="grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-2 reveal delay-1">
+        <p class="font-mono text-xs uppercase tracking-widest text-ash">
+          <span class="text-coral">●</span> Open for projects
+        </p>
+        <p class="font-mono text-xs text-ash mt-2">EST. 2026</p>
+      </div>
+
+      <div class="col-span-12 md:col-span-10 reveal delay-2">
+        <h1 class="font-display text-[11vw] md:text-[7.5vw] leading-[0.85] tracking-tight text-cream uppercase text-balance">
+          Customer reality<br/>
+          <span class="font-serif italic text-coral lowercase normal-case">turned into</span><br/>
+          shipped work.
+        </h1>
+      </div>
+
+      <div class="col-span-12 md:col-span-5 md:col-start-3 mt-12 reveal delay-3">
+        <p class="text-xl md:text-2xl text-cream/80 leading-snug font-light">
+          Throughline is a product, marketing, and brand consultancy for teams that want sharp thinking and honest delivery, not a 90-slide deck.
+        </p>
+      </div>
+
+      <div class="col-span-12 md:col-span-4 md:col-start-9 mt-12 reveal delay-4 flex flex-col gap-3 justify-end">
+        <a href="services.html" class="border border-ink-line bg-ink-soft px-6 py-4 flex items-center justify-between font-mono text-xs uppercase tracking-widest text-cream hover:bg-coral hover:text-ink hover:border-coral transition group">
+          <span>See the work we do</span>
+          <span class="group-hover:translate-x-1 transition">→</span>
+        </a>
+        <a href="contact.html" class="bg-coral text-ink px-6 py-4 flex items-center justify-between font-mono text-xs uppercase tracking-widest hover:bg-cream transition group">
+          <span>Book an intro call</span>
+          <span class="group-hover:translate-x-1 transition">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- bottom meta strip -->
+    <div class="mt-32 pt-6 border-t border-ink-line grid grid-cols-2 md:grid-cols-4 gap-6 font-mono text-xs uppercase tracking-widest text-ash">
+      <div><span class="text-coral">[01]</span> Product Strategy</div>
+      <div><span class="text-coral">[02]</span> Product Marketing</div>
+      <div><span class="text-coral">[03]</span> Brand & Identity</div>
+      <div><span class="text-coral">[04]</span> +3 more →</div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="border-y border-ink-line py-8 overflow-hidden bg-ink-soft">
+    <div class="marquee flex gap-16 whitespace-nowrap">
+      <span class="font-display text-5xl text-cream/30 uppercase tracking-wider">Sharp thinking</span>
+      <span class="font-serif italic text-5xl text-coral">honest delivery</span>
+      <span class="font-display text-5xl text-cream/30 uppercase tracking-wider">No corporate BS</span>
+      <span class="font-serif italic text-5xl text-coral">ship the thing</span>
+      <span class="font-display text-5xl text-cream/30 uppercase tracking-wider">Customer first</span>
+      <span class="font-serif italic text-5xl text-coral">deck second</span>
+      <span class="font-display text-5xl text-cream/30 uppercase tracking-wider">Sharp thinking</span>
+      <span class="font-serif italic text-5xl text-coral">honest delivery</span>
+      <span class="font-display text-5xl text-cream/30 uppercase tracking-wider">No corporate BS</span>
+      <span class="font-serif italic text-5xl text-coral">ship the thing</span>
+      <span class="font-display text-5xl text-cream/30 uppercase tracking-wider">Customer first</span>
+      <span class="font-serif italic text-5xl text-coral">deck second</span>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="py-32 px-6 md:px-10 max-w-[1400px] mx-auto">
+    <div class="grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-3">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral mb-2">[ The Idea ]</p>
+        <p class="font-mono text-xs text-ash">§ 02</p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="font-display text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight text-cream text-balance">
+          Most consultants arrive with <span class="font-serif italic text-coral lowercase normal-case">frameworks</span>. We skip the jargon and get to the answer. Then we help you <span class="font-serif italic text-coral lowercase normal-case">ship it</span>.
+        </h2>
+        <div class="mt-12 grid md:grid-cols-2 gap-12 max-w-4xl">
+          <p class="text-lg text-cream/70 leading-relaxed">
+            We start by living inside your customer's workflow. The constraints, the friction, the moment they swear at the screen. That's where the real product roadmap is hiding, not in a competitive analysis grid.
+          </p>
+          <p class="text-lg text-cream/70 leading-relaxed">
+            Then we translate. From messy reality into a prioritized list of things to ship, say, and stop doing. We're cool to work with. We don't charge by the hour. And we don't end every sentence with "circle back."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES PREVIEW -->
+  <section class="py-24 px-6 md:px-10 bg-cream text-ink">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-12 gap-6 mb-16">
+        <div class="col-span-12 md:col-span-3">
+          <p class="font-mono text-xs uppercase tracking-widest text-coral-deep mb-2">[ What We Do ]</p>
+          <p class="font-mono text-xs text-ink/50">§ 03</p>
+        </div>
+        <div class="col-span-12 md:col-span-9">
+          <h2 class="font-display text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight">
+            Six things we're<br/>
+            <span class="font-serif italic text-coral-deep lowercase normal-case">actually</span> good at.
+          </h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 border-t border-l border-ink/20">
+        <!-- 01 -->
+        <a href="services.html" class="group p-10 border-r border-b border-ink/20 hover:bg-ink hover:text-cream transition">
+          <div class="flex items-start justify-between mb-12">
+            <span class="font-mono text-xs text-coral-deep group-hover:text-coral">/01</span>
+            <span class="font-mono text-xs uppercase tracking-widest text-ink/40 group-hover:text-cream/40">Core</span>
+          </div>
+          <h3 class="font-display text-4xl uppercase tracking-tight mb-3">Product<br/>Strategy</h3>
+          <p class="text-ink/60 group-hover:text-cream/60 mb-8">Customer research, opportunity sizing, roadmap that someone will actually follow.</p>
+          <span class="font-mono text-xs uppercase tracking-widest text-coral-deep group-hover:text-coral inline-flex items-center gap-2">Read more <span class="group-hover:translate-x-1 transition">→</span></span>
+        </a>
+        <!-- 02 -->
+        <a href="services.html" class="group p-10 border-r border-b border-ink/20 hover:bg-ink hover:text-cream transition">
+          <div class="flex items-start justify-between mb-12">
+            <span class="font-mono text-xs text-coral-deep group-hover:text-coral">/02</span>
+            <span class="font-mono text-xs uppercase tracking-widest text-ink/40 group-hover:text-cream/40">Core</span>
+          </div>
+          <h3 class="font-display text-4xl uppercase tracking-tight mb-3">Product<br/>Marketing & GTM</h3>
+          <p class="text-ink/60 group-hover:text-cream/60 mb-8">Positioning that doesn't sound like every other landing page. Launches that don't fizzle.</p>
+          <span class="font-mono text-xs uppercase tracking-widest text-coral-deep group-hover:text-coral inline-flex items-center gap-2">Read more <span class="group-hover:translate-x-1 transition">→</span></span>
+        </a>
+        <!-- 03 -->
+        <a href="services.html" class="group p-10 border-r border-b border-ink/20 hover:bg-ink hover:text-cream transition">
+          <div class="flex items-start justify-between mb-12">
+            <span class="font-mono text-xs text-coral-deep group-hover:text-coral">/03</span>
+            <span class="font-mono text-xs uppercase tracking-widest text-ink/40 group-hover:text-cream/40">Core</span>
+          </div>
+          <h3 class="font-display text-4xl uppercase tracking-tight mb-3">Brand &<br/>Identity</h3>
+          <p class="text-ink/60 group-hover:text-cream/60 mb-8">Naming, voice, visual systems. The stuff that makes you sound like a person, not a vendor.</p>
+          <span class="font-mono text-xs uppercase tracking-widest text-coral-deep group-hover:text-coral inline-flex items-center gap-2">Read more <span class="group-hover:translate-x-1 transition">→</span></span>
+        </a>
+        <!-- 04 -->
+        <a href="services.html" class="group p-10 border-r border-b border-ink/20 hover:bg-ink hover:text-cream transition">
+          <div class="flex items-start justify-between mb-12">
+            <span class="font-mono text-xs text-coral-deep group-hover:text-coral">/04</span>
+            <span class="font-mono text-xs uppercase tracking-widest text-ink/40 group-hover:text-cream/40">Add-on</span>
+          </div>
+          <h3 class="font-display text-4xl uppercase tracking-tight mb-3">Creative<br/>Services</h3>
+          <p class="text-ink/60 group-hover:text-cream/60 mb-8">Art direction, design, video, photography, pulled together with a vetted partner network.</p>
+          <span class="font-mono text-xs uppercase tracking-widest text-coral-deep group-hover:text-coral inline-flex items-center gap-2">Read more <span class="group-hover:translate-x-1 transition">→</span></span>
+        </a>
+        <!-- 05 -->
+        <a href="services.html" class="group p-10 border-r border-b border-ink/20 hover:bg-ink hover:text-cream transition">
+          <div class="flex items-start justify-between mb-12">
+            <span class="font-mono text-xs text-coral-deep group-hover:text-coral">/05</span>
+            <span class="font-mono text-xs uppercase tracking-widest text-ink/40 group-hover:text-cream/40">Add-on</span>
+          </div>
+          <h3 class="font-display text-4xl uppercase tracking-tight mb-3">Digital<br/>Marketing</h3>
+          <p class="text-ink/60 group-hover:text-cream/60 mb-8">Lifecycle, paid, SEO, content systems. Built around what the data is actually telling you.</p>
+          <span class="font-mono text-xs uppercase tracking-widest text-coral-deep group-hover:text-coral inline-flex items-center gap-2">Read more <span class="group-hover:translate-x-1 transition">→</span></span>
+        </a>
+        <!-- 06 -->
+        <a href="services.html" class="group p-10 border-r border-b border-ink/20 hover:bg-ink hover:text-cream transition relative">
+          <div class="flex items-start justify-between mb-12">
+            <span class="font-mono text-xs text-coral-deep group-hover:text-coral">/06</span>
+            <span class="font-mono text-xs uppercase tracking-widest text-coral-deep">Embedded</span>
+          </div>
+          <h3 class="font-display text-4xl uppercase tracking-tight mb-3">Fractional<br/>Leadership</h3>
+          <p class="text-ink/60 group-hover:text-cream/60 mb-8">Drop-in head of product or PMM for teams that need senior judgment without a senior salary.</p>
+          <span class="font-mono text-xs uppercase tracking-widest text-coral-deep group-hover:text-coral inline-flex items-center gap-2">Read more <span class="group-hover:translate-x-1 transition">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section class="py-32 px-6 md:px-10 max-w-[1400px] mx-auto">
+    <div class="grid grid-cols-12 gap-6 mb-16">
+      <div class="col-span-12 md:col-span-3">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral mb-2">[ Process ]</p>
+        <p class="font-mono text-xs text-ash">§ 04</p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="font-display text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight text-cream">
+          Three steps.<br/>
+          <span class="font-serif italic text-coral lowercase normal-case">No theater.</span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-px bg-ink-line">
+      <div class="bg-ink p-10 md:p-12">
+        <div class="flex items-center justify-between mb-12">
+          <span class="font-display text-7xl text-coral leading-none">01</span>
+          <span class="font-mono text-xs uppercase tracking-widest text-ash">Listen</span>
+        </div>
+        <h3 class="font-display text-3xl uppercase tracking-tight text-cream mb-4">Get inside the workflow</h3>
+        <p class="text-cream/60 leading-relaxed">We talk to your customers, your team, and your data. Two weeks, no slides. Just notes, transcripts, and the things nobody's saying out loud.</p>
+      </div>
+      <div class="bg-ink p-10 md:p-12">
+        <div class="flex items-center justify-between mb-12">
+          <span class="font-display text-7xl text-coral leading-none">02</span>
+          <span class="font-mono text-xs uppercase tracking-widest text-ash">Translate</span>
+        </div>
+        <h3 class="font-display text-3xl uppercase tracking-tight text-cream mb-4">Turn it into a plan</h3>
+        <p class="text-cream/60 leading-relaxed">A short, sharp document. What to do, why, in what order, and what to stop doing. Designed to be acted on by Friday, not parsed by a steering committee.</p>
+      </div>
+      <div class="bg-ink p-10 md:p-12">
+        <div class="flex items-center justify-between mb-12">
+          <span class="font-display text-7xl text-coral leading-none">03</span>
+          <span class="font-mono text-xs uppercase tracking-widest text-ash">Ship</span>
+        </div>
+        <h3 class="font-display text-3xl uppercase tracking-tight text-cream mb-4">Build with you, not at you</h3>
+        <p class="text-cream/60 leading-relaxed">We embed with your team and execute. Positioning written. Roadmap shipped. Brand launched. We leave when it's done, or stay on retainer if it's working.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIG QUOTE / DIFFERENTIATOR -->
+  <section class="py-32 px-6 md:px-10 bg-coral text-ink">
+    <div class="max-w-[1200px] mx-auto">
+      <p class="font-mono text-xs uppercase tracking-widest mb-12">[ Why us / The Honest Version ]</p>
+      <p class="font-display text-5xl md:text-7xl leading-[0.95] uppercase tracking-tight text-balance">
+        Most consultancies are <span class="font-serif italic lowercase normal-case">built to stay.</span><br/>
+        We're built <span class="font-serif italic lowercase normal-case">to finish.</span>
+      </p>
+      <div class="mt-16 grid md:grid-cols-3 gap-8 font-mono text-xs uppercase tracking-widest">
+        <div class="flex items-start gap-3">
+          <span class="text-ink/40">→</span>
+          <span>Fixed scopes, fixed prices. No hourly games.</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-ink/40">→</span>
+          <span>Senior people doing the work. No bait-and-switch.</span>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-ink/40">→</span>
+          <span>If we're not the right fit, we'll tell you.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="py-32 px-6 md:px-10 max-w-[1400px] mx-auto">
+    <div class="grid grid-cols-12 gap-6 mb-16">
+      <div class="col-span-12 md:col-span-3">
+        <p class="font-mono text-xs uppercase tracking-widest text-coral mb-2">[ Who We Work With ]</p>
+        <p class="font-mono text-xs text-ash">§ 05</p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="font-display text-5xl md:text-7xl uppercase leading-[0.9] tracking-tight text-cream text-balance">
+          Built for teams between <span class="font-serif italic text-coral lowercase normal-case">"figuring it out"</span> and <span class="font-serif italic text-coral lowercase normal-case">"scaling fast."</span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="border-t border-ink-line">
+      <div class="grid md:grid-cols-2 border-b border-ink-line">
+        <div class="p-10 md:border-r border-ink-line">
+          <p class="font-mono text-xs uppercase tracking-widest text-coral mb-3">Stage</p>
+          <p class="text-2xl text-cream font-light">Seed through Series C. Bootstrapped or VC-backed. We've worked with both.</p>
+        </div>
+        <div class="p-10">
+          <p class="font-mono text-xs uppercase tracking-widest text-coral mb-3">Industries</p>
+          <p class="text-2xl text-cream font-light">B2B SaaS. Consumer tech. Marketplaces. Hardware-software. Anything with a real customer.</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2">
+        <div class="p-10 md:border-r border-ink-line">
+          <p class="font-mono text-xs uppercase tracking-widest text-coral mb-3">Team Size</p>
+          <p class="text-2xl text-cream font-light">5 to 2000. Past 2000, you probably have us in-house already.</p>
+        </div>
+        <div class="p-10">
+          <p class="font-mono text-xs uppercase tracking-widest text-coral mb-3">Engagement Type</p>
+          <p class="text-2xl text-cream font-light">Two-week sprints, multi-month projects, or fractional retainers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-40 px-6 md:px-10 bg-cream text-ink">
+    <div class="max-w-[1200px] mx-auto text-center">
+      <p class="font-mono text-xs uppercase tracking-widest text-coral-deep mb-8">[ Let's talk ]</p>
+      <h2 class="font-display text-6xl md:text-9xl uppercase leading-[0.85] tracking-tight text-balance mb-12">
+        Got a thing<br/>
+        you need <span class="font-serif italic text-coral-deep lowercase normal-case">figured out?</span>
+      </h2>
+      <p class="text-xl text-ink/60 max-w-xl mx-auto mb-12">
+        Tell us what's keeping you up. We'll tell you if we can help, and roughly what it'll take.
+      </p>
+      <a href="contact.html" class="inline-flex items-center gap-3 bg-ink text-cream px-10 py-5 font-mono text-xs uppercase tracking-widest hover:bg-coral hover:text-ink transition">
+        Start the conversation <span>→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-ink border-t border-ink-line pt-20 pb-10 px-6 md:px-10">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-12 gap-6 mb-16">
+        <div class="col-span-12 md:col-span-5">
+          <div class="flex items-baseline gap-1.5 mb-6">
+            <span class="font-display text-4xl tracking-wider text-cream">THROUGHLINE</span>
+            <span class="text-coral font-mono text-xs">/01</span>
+          </div>
+          <p class="text-cream/60 max-w-md text-lg leading-relaxed">
+            A product, marketing, and brand consultancy for teams who want sharp thinking and honest delivery.
+          </p>
+        </div>
+        <div class="col-span-6 md:col-span-3 md:col-start-8">
+          <p class="font-mono text-xs uppercase tracking-widest text-coral mb-6">Pages</p>
+          <ul class="space-y-3 font-mono text-sm">
+            <li><a href="index.html" class="text-cream/70 hover:text-coral transition">Home</a></li>
+            <li><a href="about.html" class="text-cream/70 hover:text-coral transition">About</a></li>
+            <li><a href="services.html" class="text-cream/70 hover:text-coral transition">Services</a></li>
+            <li><a href="contact.html" class="text-cream/70 hover:text-coral transition">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-span-6 md:col-span-2">
+          <p class="font-mono text-xs uppercase tracking-widest text-coral mb-6">Reach</p>
+          <ul class="space-y-3 font-mono text-sm">
+            <li><a href="mailto:hello@throughline.co" class="text-cream/70 hover:text-coral transition">Email</a></li>
+            <li><a href="#" class="text-cream/70 hover:text-coral transition">LinkedIn</a></li>
+            <li><a href="#" class="text-cream/70 hover:text-coral transition">Substack</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-ink-line pt-8 flex flex-col md:flex-row justify-between gap-4 font-mono text-xs uppercase tracking-widest text-ash">
+        <p>© 2026 Throughline. Made in Denver.</p>
+        <p>All rights reserved · <span class="text-coral">●</span> Open for projects</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navClose = document.getElementById('nav-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    navToggle.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    });
+    navClose.addEventListener('click', () => {
+      mobileMenu.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    });
+  </script>
+</body>
+</html>
